@@ -9,6 +9,9 @@
 #include "Perception/PawnSensingComponent.h"
 #include "CPP_CharacterBase.generated.h"
 
+// Forward declaration for the event dispatcher delegate type
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnDieEvent);
+
 /**
  * ACPP_CharacterBase defines the base character class in the Arena Fighter game.
  * This class manages character attributes like health, weapon handling, and related events.
@@ -114,6 +117,9 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent, Category = "Character State")
 	void OnDie();
+
+	UPROPERTY(BlueprintAssignable, Category = "Character State")
+	FOnDieEvent OnDieDispatcher;
 
 	UFUNCTION(BlueprintImplementableEvent, Category = "Attributes")
 	void OnHealthChanged(float InHealth);

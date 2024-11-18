@@ -207,6 +207,7 @@ void ACPP_CharacterBase::Die()
 {
 	if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("Die"));
 	OnDie();
+	OnDieDispatcher.Broadcast();
 }
 
 void ACPP_CharacterBase::AddHealth(float add)
