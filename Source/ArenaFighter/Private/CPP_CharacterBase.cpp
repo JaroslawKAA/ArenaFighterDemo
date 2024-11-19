@@ -56,6 +56,12 @@ void ACPP_CharacterBase::EndPlay(const EEndPlayReason::Type EndPlayReason)
 {
 	Super::EndPlay(EndPlayReason);
 
+	if(EquippedWeapon->IsValidLowLevel())
+	{
+		EquippedWeapon->Destroy();
+		EquippedWeapon = nullptr;
+	}
+
 	if (PawnSensing)
 		PawnSensing->OnSeePawn.RemoveDynamic(this, &ACPP_CharacterBase::OnSeePawn);
 
